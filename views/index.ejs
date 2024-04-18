@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/_head.ejs') %>
+  <body>
+<%- include('partials/_header.ejs') %>
+    <main role="main" class="container mt-4">
+      <div id="chatContainer" class="shadow p-3 mb-5 bg-white rounded">
+        <div id="chatMessages" class="mb-3" style="height: 300px; overflow-y: scroll; padding: 10px; border: 1px solid #ccc;"></div>
+        <div class="d-flex">
+          <input type="text" id="userInput" placeholder="Type your message..." class="form-control mr-2">
+          <button id="sendButton" class="btn btn-primary">Send</button>
+          <!-- File upload form for rich media attachments -->
+          <form id="mediaUploadForm" enctype="multipart/form-data">
+            <input type="file" id="mediaInput" name="media" accept="image/*,video/*" hidden>
+            <label for="mediaInput" class="btn btn-secondary">Upload</label>
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
+<%- include('partials/_footer.ejs') %>
+  <script src="/js/main.js"></script>
+  <script src="/js/voiceInteraction.js"></script> <!-- Voice interaction script -->
+  <script>
+    document.getElementById('mediaInput').addEventListener('change', function(event) {
+      const formData = new FormData();
+      formData.append('media', this.files[0]);
+      fetch('/api/media/upload', {
+        method: 'POST',
+        body: formData,
+      })
+      .then(response => response.json())
+      .then(data => {
+        if(data.success) {
+          console.log('Media uploaded successfully:', data.filePath);
+          // Display the uploaded media in chat or send a message indicating successful upload
+        } else {
+          console.error('Media upload failed:', data.message);
+        }
+      })
+      .catch(error => {
+        console.error('Error uploading media:', error);
+        console.error('Error stack:', error.stack);
+      });
+    });
+
+    // Voice interaction initialization
+    if (typeof initSpeechToSpeech === 'function') {
+      initSpeechToSpeech('Hey Kevin', 'Google US English'); // The actual wake word and voice name are specified here
+    }
+  </script>
+</html>
