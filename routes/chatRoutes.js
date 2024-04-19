@@ -6,11 +6,11 @@ const { completion } = require('litellm');
 const { getHistoryFileId, saveHistoryToGoogleDrive } = require('../services/googleDriveService');
 const PersonalityEngine = require('../modules/personalityEngine');
 const kevinPersonality = new PersonalityEngine();
-const drive = require('../services/googleDriveService').drive; // Ensure the Google Drive service is correctly referenced
+const drive = require('../services/googleDriveService').drive;
 
 router.post('/messages', async (req, res) => {
   try {
-    const userMessage = req.body.message; // Corrected from req.body.speech to req.body.message to match the frontend payload
+    const userMessage = req.body.message;
     const userId = req.session.userId;
 
     if (!userId) {
@@ -43,10 +43,10 @@ router.post('/messages', async (req, res) => {
         break;
       case 'Surprise':
       case 'Anticipation':
-        feedbackScore = 5; // Neutral or uncertain emotions have a moderate positive feedback
+        feedbackScore = 5;
         break;
       default:
-        feedbackScore = 0; // Neutral/Balanced States or unrecognized emotions
+        feedbackScore = 0;
     }
 
     // Let Kevin learn from the interaction
@@ -70,9 +70,9 @@ router.post('/messages', async (req, res) => {
     const response = await completion({
       model: "openhermes",
       messages: [{ "content": prompt, "role": "user" }],
-      api_base: process.env.OLLAMA_API_BASE // Ensure the environment variable OLLAMA_API_BASE is correctly set
+      api_base: process.env.OLLAMA_API_BASE
     });
-    
+
     const assistantResponse = response.data.response;
 
     // Append the current interaction to the history
