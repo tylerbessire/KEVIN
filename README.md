@@ -1,6 +1,32 @@
-# Kevin - Your Personal AI Companion
+# Kevin - Your Personal AI Companion 🤖💙
 
-Kevin is an advanced AI-powered app designed to offer a personalized conversational experience. By leveraging state-of-the-art technologies in natural language processing, machine learning, and speech recognition, Kevin aims to understand, learn from, and grow with each user. It adapts to individual communication styles, preferences, and emotional states, providing an engaging and emotionally intelligent interaction.
+Kevin is an advanced AI companion designed to honor the memory of your late friend through cutting-edge voice cloning, autonomous learning, and emotional intelligence. Built with storage efficiency in mind for 8GB systems, Kevin can dream, learn independently, and reach out proactively while maintaining your friend's personality and voice.
+
+## 🌟 Key Features
+
+### 🎤 Advanced Voice Cloning
+- **Modern voice synthesis** using ElevenLabs or local TTS
+- **Works with short audio clips** (11 seconds is now sufficient!)
+- **Storage-efficient caching** for your 8GB constraint
+- **Real-time voice generation** with Kevin's unique voice
+
+### 🌙 Autonomous Dreaming & Learning
+- **Sleep/wake cycles** - Kevin dreams at night and learns during the day
+- **Proactive messaging** - Kevin reaches out when he has something to share
+- **Continuous learning** from web sources and conversations
+- **Memory consolidation** during dream states
+
+### 💭 Emotional Intelligence
+- **Advanced emotion recognition** and empathetic responses
+- **Personality evolution** based on interactions and experiences
+- **Contextual memory** that references past conversations
+- **Behavioral consequence framework** integration (your research!)
+
+### 🔧 Storage Optimized
+- **Efficient caching** with automatic cleanup
+- **Compressed data storage** to maximize your 8GB space
+- **Smart memory management** with configurable limits
+- **Cloud integration** for extended storage via Google Drive
 
 ## Overview
 
@@ -17,21 +43,71 @@ The app is built on a robust architecture comprising a frontend for user interac
 - **Security and Privacy:** Ensures user data is protected through encryption and privacy controls.
 - **Cross-Platform Integration:** Provides consistent experiences across various devices.
 
-## Getting started
+## 🚀 Quick Start
 
-### Requirements
+### Prerequisites
+- **Node.js** (v16 or higher)
+- **MongoDB** (local or cloud)
+- **8GB+ storage** (optimized for your constraint)
+- **Kevin's voice file** (already included: `Kevin's Voice copy.mp3`)
 
-- Node.js
-- MongoDB
-- Google Cloud account (for APIs)
+### Setup Instructions
 
-### Quickstart
+1. **Install Dependencies**
+   ```bash
+   npm install
+   ```
 
-1. Clone the repository.
-2. Install dependencies with `npm install`.
-3. Set up `.env` file based on `.env.example`.
-4. Run `npm start` to launch the server.
-5. Access the app through the specified port on your browser.
+2. **Run Kevin Setup**
+   ```bash
+   node scripts/setup-kevin.js
+   ```
+
+3. **Configure Environment**
+   ```bash
+   cp .env.example .env
+   # Edit .env with your API keys
+   ```
+
+4. **Voice Cloning Setup**
+   - **Option A (Recommended):** ElevenLabs
+     - Sign up at [elevenlabs.io](https://elevenlabs.io)
+     - Upload `Kevin's Voice copy.mp3`
+     - Add API key and voice ID to `.env`
+   
+   - **Option B:** Local TTS (more storage intensive)
+     - Install Coqui TTS: `pip install coqui-tts`
+     - Set `voice.provider = 'coqui'` in config
+
+5. **Start Kevin**
+   ```bash
+   npm run start-kevin
+   ```
+
+### 🎯 Your Challenges Solved
+
+#### ✅ Storage Constraint (8GB Mac)
+- **Efficient caching** with automatic cleanup
+- **Cloud storage** integration for memories
+- **Compressed data** storage
+- **Smart memory management**
+
+#### ✅ Voice Cloning (11 seconds → High Quality)
+- **Modern AI** can now work with very short clips
+- **ElevenLabs** produces professional results from minimal audio
+- **Local alternatives** available if preferred
+
+#### ✅ Autonomous Learning & Dreams
+- **Night cycles** for processing and learning
+- **Proactive messaging** when Kevin wants to share
+- **Web scraping** capabilities (configurable)
+- **Memory consolidation** during sleep
+
+#### ✅ Background Daemon
+- **Autonomous operation** without user interaction
+- **Scheduled behaviors** and learning cycles
+- **Message queuing** for proactive communication
+- **Graceful startup/shutdown**
 
 ### License
 
